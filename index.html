@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to hima nour</title>
+    
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            direction: rtl;
+        }
+        .accordion {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 5px;
+        }
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            background: #fafafa;
+            position: relative;
+            font-weight: bold;
+        }
+        .accordion-header::after {
+            content: "+";
+            position: absolute;
+            right: 20px;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.active::after {
+            content: "-";
+        }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 20px;
+            background: #fff;
+        }
+        .accordion-body.open {
+            padding: 15px 20px;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="accordion" id="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">do you still love me?</div>
+            <div class="accordion-body">yes i still love you</div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">do you still want me?</div>
+            <div class="accordion-body">yes i still want you</div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">do you still need me?</div>
+            <div class="accordion-body">yes i still need you</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const currentlyActive = document.querySelector('.accordion-header.active');
+                
+                if (currentlyActive && currentlyActive !== header) {
+                    currentlyActive.classList.remove('active');
+                    currentlyActive.nextElementSibling.classList.remove('open');
+                }
+                
+                header.classList.toggle('active');
+                header.nextElementSibling.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
+
